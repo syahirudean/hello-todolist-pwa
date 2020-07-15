@@ -4,11 +4,14 @@
             <div class="message-header">
                 <p class="has-text-black-bis"style="font-size: larger;">{{todo.title}}</p>
                 <a class="" (click)="editTodo($event, todo)" *ngIf="editState === false">✏️</a>
-                <a class="level-right mb-2" (click)="close()" *ngIf="editState === (todo.id && true)">❌</a>
+                <a class="level-right mb-2" (click)="close()">❌</a>
             </div>
             <div class="message-body has-text-black">
                 {{todo.description}}
                 <div class="mt-3" *ngIf="editState && edit.id == todo.id">
+                    <div>
+                        <a class="level-right mb-2" (click)="close()">❌</a>
+                    </div>
                     <form (ngSubmit)="updateTodo(todo)">
     
                         <div class="py-2">
