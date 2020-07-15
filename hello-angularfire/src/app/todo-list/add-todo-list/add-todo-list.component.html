@@ -1,0 +1,18 @@
+<main>
+    <div class="container column is-three-fifths is-offset-one-fifth px-3 py-3">
+        <div class="card message is-link">
+            <div class="message-header"><h4 class="subtitle is-4 has-text-black-bis">📝 Add Todo</h4></div>
+            <form class="px-5 pt-2 pb-5" [formGroup]="todoForm" (ngSubmit)="onSubmit()">
+                <div class="container p-6">
+                    <div class="py-2">
+                            <input class="input is-rounded" placeholder="What shall you do?" formControlName="title">
+                    </div>
+                    <div class="py-3">
+                            <textarea class="textarea" placeholder="Describe your task..." formControlName="description" style="height:50px"></textarea>
+                    </div>
+                </div>
+                <button class="button is-primary">➕ Add Todo</button>
+            </form>
+        </div>
+    </div>
+</main>
