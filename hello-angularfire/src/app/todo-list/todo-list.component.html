@@ -1,0 +1,41 @@
+<main class="container" *ngIf="todoList?.length > 0;else noTodos">
+    <ul *ngFor="let todo of todoList" class="container column is-three-fifths is-offset-one-fifth px-3 py-3">
+        <li class="card message is-primary">
+            <div class="message-header">
+                <p class="has-text-black-bis"style="font-size: larger;">{{todo.title}}</p>
+                <a class="" (click)="editTodo($event, todo)" *ngIf="editState === false">✏️</a>
+                <a class="level-right mb-2" (click)="close()">❌</a>
+            </div>
+            <div class="message-body has-text-black">
+                {{todo.description}}
+                <div class="mt-3" *ngIf="editState && edit.id == todo.id">
+                    <div>
+                        <a class="level-right mb-2" (click)="close()">❌</a>
+                    </div>
+                    <form (ngSubmit)="updateTodo(todo)">
+    
+                        <div class="py-2">
+                            <input class="input is-rounded" name="title" placeholder="update title"
+                                [(ngModel)]="todo.title">
+                        </div>
+    
+                        <div class="py-3">
+                            <textarea class="textarea" type="text" name="description" placeholder="update description"
+                                [(ngModel)]="todo.description" style="height:50px"></textarea>
+                        </div>
+                        <button class="button is-link mr-1  ">✔️ Update</button>
+                        <button class="button is-danger ml-1" (click)="deleteTodo($event, todo)">🗑️ Delete</button>
+    
+                    </form>
+                </div>
+            </div>
+        </li>
+
+    </ul>
+</main>
+
+<ng-template #noTodos>
+    <section>
+        <h3>Nothing to-do right now.</h3>
+    </section>
+</ng-template>
